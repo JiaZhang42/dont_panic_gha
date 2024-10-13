@@ -1,9 +1,9 @@
 on:
   push:
   workflow_dispatch:
-  # Run every 3 hours at 15 minutes past the hour
-  schedule: [{cron: '40 * * * *'}]
-# '0 12,14,16,18,20 * 6-9 *'
+  # Run every 2 hours from 12:00 to 20:00 everyday from June to September
+  schedule: [{cron: '0 12,14,16,18,20 * 6-9 *'}]
+
 name: scrape
 
 jobs:

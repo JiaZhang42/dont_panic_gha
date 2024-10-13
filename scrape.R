@@ -16,7 +16,7 @@ if (length(pdflink) == 0){
   stop("No link found! Did the website or the selector change?")
 }
 
-gha_notice("The waiting list was last updated at {ymd(str_extract(pdflink, '\\\\d{8}'))}")
+gha_notice("The waiting list was last updated on {ymd(str_extract(pdflink, '\\\\d{8}'))}")
 
 if(pdflink != pdflink_last){
   gha_notice("Waiting list updated. Sending notification.")
