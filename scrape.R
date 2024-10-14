@@ -20,11 +20,15 @@ gha_notice("The waiting list was last updated on {ymd(str_extract(pdflink, '\\\\
 
 if(pdflink != pdflink_last){
   gha_notice("Waiting list updated. Sending notification.")
-  msg <- paste0("Please visit ", pdflink)
+  msg <- "Click to see"
   request("https://ntfy.sh/") %>% 
     req_url_path('ust_pg_housing_wl') %>% 
     req_body_raw(msg) %>% 
-    req_headers(Title = 'PG Housing Waiting List Updated', Click = pdflink) %>% 
+    req_headers(Title = "Waiting List Updated",
+                Priority = "urgent",
+                Tags = "loudspeaker,house", 
+                Action = paste0('view, GO TO, ', pdflink),
+                Click = pdflink) %>% 
     req_perform()
 }
 
